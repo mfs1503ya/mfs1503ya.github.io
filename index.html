@@ -290,7 +290,7 @@ dialog small{color:var(--muted);font-size:13px}
   <h2 class="sh rv" style="margin-bottom:30px">Lo que suele preguntar la gente</h2>
   <details><summary>¿Los precios son exactos?</summary><p>Son estimaciones a partir de precios públicos medios de cada supermercado. Pueden variar según la tienda, la zona y las ofertas. Menuda no está afiliada a ningún supermercado.</p></details>
   <details><summary>¿Qué incluye el presupuesto?</summary><p>Solo lo que hay que comprar para ese menú. El aceite, la sal y las especias van aparte, porque casi todo el mundo los tiene en casa.</p></details>
-  <details><summary>¿Hay versión para Android?</summary><p data-android-faq>Sí. Estamos terminando las pruebas en Google Play. Déjanos tu correo y te avisamos el día que salga.</p></details>
+  <details><summary>¿Hay versión para Android?</summary><p data-android-faq>Sí, está en Google Play.</p></details>
   <details><summary>¿Cómo cancelo?</summary><p>Desde la App Store o Google Play, en Suscripciones. Si cancelas durante la prueba de 3 días, no se te cobra nada.</p></details>
   <details><summary>¿Necesito crear una cuenta?</summary><p>No. Tus preferencias se guardan en tu móvil. Puedes borrar tus datos cuando quieras: <a href="borrar-cuenta.html">cómo hacerlo</a>.</p></details>
 </div></section>
@@ -331,7 +331,7 @@ dialog small{color:var(--muted);font-size:13px}
 const CFG = {
   appStoreId: '6824297154',
   iosLive: true,           // aprobada por Apple el 2 nov 2026
-  androidLive: false,      // true cuando salga en producción en Google Play
+  androidLive: true,       // en producción en Google Play desde nov 2026
   playId: 'app.menuda.android',
   appleProviderToken: '',  // "pt" de App Store Connect → Enlaces de campaña (para medir por vídeo)
   waitlistEndpoint: ''     // URL del formulario (Tally/Formspree…). Vacío = abre el correo
