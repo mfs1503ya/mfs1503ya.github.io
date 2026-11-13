@@ -74,11 +74,23 @@ h1 em{font-style:normal;color:var(--moon)}
 .feat .ic svg{width:21px;height:21px}
 .feat b{display:block;font-size:16px;font-weight:800;margin-bottom:2px}
 .feat span{color:var(--dim);font-size:14.5px;line-height:1.4}
-/* shots */
+/* shots carousel */
 .shots-h{margin:34px 0 12px;font-size:13px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--faint);text-align:center}
-.shots{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 12px;scrollbar-width:none}
-.shots::-webkit-scrollbar{display:none}
-.shots img{flex:none;width:62%;max-width:250px;aspect-ratio:600/1304;height:auto;border-radius:20px;border:1px solid var(--line);scroll-snap-align:center;background:var(--surface);box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.car{position:relative;margin:0 -20px}
+@media (min-width:500px){.track{-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent)}}
+.track{display:flex;gap:14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:6px calc(50% - min(31vw,125px)) 18px;-webkit-overflow-scrolling:touch;cursor:grab;user-select:none;-webkit-user-select:none}
+.track.drag{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:none;width:min(62vw,250px);scroll-snap-align:center;transition:transform .35s ease,opacity .35s ease;transform:scale(.88);opacity:.45}
+.slide.on{transform:none;opacity:1}
+.slide img{display:block;width:100%;height:auto;aspect-ratio:600/1304;border-radius:22px;border:1px solid var(--line);background:var(--surface);box-shadow:0 16px 40px rgba(0,0,0,.5);pointer-events:none;-webkit-user-drag:none}
+.arrow{position:absolute;top:calc(50% - 30px);width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:rgba(28,27,58,.85);color:var(--text);font:800 20px/1 Nunito,sans-serif;display:grid;place-items:center;cursor:pointer;z-index:2;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.arrow.prev{left:12px}.arrow.next{right:12px}
+.arrow:disabled{opacity:0;pointer-events:none}
+.dots{display:flex;justify-content:center;gap:8px;margin:2px 0 4px}
+.dots button{width:8px;height:8px;padding:0;border:0;border-radius:9px;background:var(--line);cursor:pointer;transition:width .3s ease,background .3s ease}
+.dots button[aria-current]{width:24px;background:var(--accent)}
+.cap{text-align:center;color:var(--dim);font-size:14.5px;margin:12px 0 0;min-height:21px}
 /* bottom cta */
 .again{margin:26px 0 0;text-align:center}
 .again .btn{justify-content:center;text-align:center}
@@ -112,7 +124,7 @@ input[type=email]::placeholder{color:var(--faint)}
 .sheet.ok .done{display:block}.sheet.ok form,.sheet.ok .ask{display:none}
 .done .big{font-size:44px;margin:4px 0}
 .done .ios-tip{margin-top:14px;font-size:14px;color:var(--dim)}
-@media (prefers-reduced-motion:reduce){.owl,.s1,.s2{animation:none}.sheet,.scrim{transition:none}}
+@media (prefers-reduced-motion:reduce){.owl,.s1,.s2{animation:none}.slide{transition:none}.sheet,.scrim{transition:none}}
 @media (min-width:720px){.wrap{padding-top:48px}}
 </style>
 </head>
@@ -151,12 +163,17 @@ input[type=email]::placeholder{color:var(--faint)}
     </section>
 
     <h2 class="shots-h">Inside the app</h2>
-    <div class="shots" tabindex="0" aria-label="Inside the app">
-      <img src="img/en_01_journal.webp" alt="Dream journal screen" loading="lazy" width="600" height="1304">
-      <img src="img/en_02_interpretation.webp" alt="Dream interpretation screen" loading="lazy" width="600" height="1304">
-      <img src="img/en_03_capture.webp" alt="Capture a dream by voice or text" loading="lazy" width="600" height="1304">
-      <img src="img/en_05_lucid.webp" alt="Lucid dreaming programme" loading="lazy" width="600" height="1304">
+    <div class="car" id="car">
+      <button class="arrow prev" type="button" aria-label="‹">‹</button>
+      <div class="track" id="track" tabindex="0" aria-label="Inside the app">
+        <div class="slide"><img src="img/en_01_journal.webp" alt="Dream journal screen" width="600" height="1304" draggable="false"></div>
+        <div class="slide"><img src="img/en_02_interpretation.webp" alt="Dream interpretation screen" width="600" height="1304" draggable="false"></div>
+        <div class="slide"><img src="img/en_03_capture.webp" alt="Capture a dream by voice or text" width="600" height="1304" draggable="false"></div>
+        <div class="slide"><img src="img/en_05_lucid.webp" alt="Lucid dreaming programme" width="600" height="1304" draggable="false" loading="lazy"></div>
+      </div>
+      <button class="arrow next" type="button" aria-label="›">›</button>
     </div>
+    <div class="dots" id="dots"></div>
 
     <div class="again"><a class="btn ios" id="btn-again" href="https://apps.apple.com/app/id6831326910" rel="noopener"><b>Get Hoo on the App Store</b></a></div>
     <div class="trust"><span>Encrypted on your phone</span><span>No account needed</span><span>Cancel anytime</span></div>
@@ -194,6 +211,31 @@ input[type=email]::placeholder{color:var(--faint)}
   var T={bad:"That email doesn’t look right.",fail:"Something went wrong. Please try again.",sending:"Sending…",btn:"Notify me"};
   var q=new URLSearchParams(location.search), ua=navigator.userAgent||"";
   if(!q.get("lang")){var st=null;try{st=localStorage.getItem("hoo_lang")}catch(e){}if(st==="es"||(!st&&/^es\b/i.test(navigator.language||""))){location.replace("es/"+location.search+location.hash);return}}else{try{localStorage.setItem("hoo_lang",q.get("lang"))}catch(e){}}
+  // Screenshot carousel: swipe, drag, arrows, dots, gentle autoplay.
+  (function(){
+    var tr=document.getElementById("track"),sl=[].slice.call(tr.children),dots=document.getElementById("dots"),
+        pv=document.querySelector(".arrow.prev"),nx=document.querySelector(".arrow.next"),cur=-1,timer=null,user=false;
+    sl.forEach(function(el,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label",(i+1)+"/"+sl.length);b.onclick=function(){stop();go(i)};dots.appendChild(b)});
+    function go(i){i=(i+sl.length)%sl.length;var el=sl[i];tr.scrollTo({left:el.offsetLeft-(tr.clientWidth-el.clientWidth)/2,behavior:"smooth"})}
+    function mark(){var c=tr.scrollLeft+tr.clientWidth/2,best=0,bd=1e9;sl.forEach(function(el,i){var d=Math.abs(el.offsetLeft+el.clientWidth/2-c);if(d<bd){bd=d;best=i}});
+      if(best===cur)return;cur=best;sl.forEach(function(el,i){el.classList.toggle("on",i===cur)});
+      [].forEach.call(dots.children,function(d,i){if(i===cur)d.setAttribute("aria-current","true");else d.removeAttribute("aria-current")});
+      pv.disabled=cur===0;nx.disabled=cur===sl.length-1}
+    var raf=0;tr.addEventListener("scroll",function(){cancelAnimationFrame(raf);raf=requestAnimationFrame(mark)},{passive:true});
+    pv.onclick=function(){stop();go(cur-1)};nx.onclick=function(){stop();go(cur+1)};
+    function stop(){user=true;clearInterval(timer)}
+    tr.addEventListener("touchstart",stop,{passive:true});tr.addEventListener("wheel",stop,{passive:true});
+    tr.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){stop();go(cur+1)}else if(e.key==="ArrowLeft"){stop();go(cur-1)}});
+    // mouse drag (desktop)
+    var down=false,sx=0,sl0=0,moved=false;
+    tr.addEventListener("mousedown",function(e){down=true;moved=false;sx=e.pageX;sl0=tr.scrollLeft;stop()});
+    window.addEventListener("mousemove",function(e){if(!down)return;var dx=e.pageX-sx;if(Math.abs(dx)>3){moved=true;tr.classList.add("drag")}tr.scrollLeft=sl0-dx});
+    window.addEventListener("mouseup",function(){if(!down)return;down=false;tr.classList.remove("drag");if(moved)go(cur)});
+    window.addEventListener("resize",function(){cur=-1;mark()});
+    mark();
+    var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(!reduce&&"IntersectionObserver" in window){new IntersectionObserver(function(en){clearInterval(timer);if(en[0].isIntersecting&&!user)timer=setInterval(function(){go(cur+1)},3200)},{threshold:.6}).observe(tr)}
+  })();
   // Where the visit comes from (bio link of each network).
   var src=q.get("s")||q.get("utm_source")||(/musical_ly|TikTok|BytedanceWebview/i.test(ua)?"tiktok":/Instagram/i.test(ua)?"instagram":/FBAN|FBAV|FB_IAB/i.test(ua)?"facebook":"")||(document.referrer?(function(){try{return new URL(document.referrer).hostname}catch(e){return""}})():"direct");
   var isAndroid=/Android/i.test(ua);
