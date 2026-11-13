@@ -1,9 +1,226 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dream journal · Hoo</title><style>body{font:16px/1.6 -apple-system,system-ui,Segoe UI,Roboto,sans-serif;margin:0;background:#12112A;color:#ECEAF8}
-main{max-width:720px;margin:0 auto;padding:32px 20px 64px}h1{font-size:28px;line-height:1.2;margin:0 0 4px}h2{font-size:19px;margin:28px 0 6px}
-.f{color:#A7A3C9;font-size:14px;margin:0 0 20px}a{color:#B9BCF5}nav{font-size:14px;margin-bottom:24px}nav a{margin-right:14px}
-table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}td,th{border:1px solid #34315E;padding:8px;text-align:left;vertical-align:top}th{background:#1E1C40}
-.box{border:1px solid #34315E;border-radius:12px;padding:12px 16px;background:#1A1838}img.owl{width:96px;height:96px}</style></head><body><main><nav><a href="./">Hoo</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="delete-data.html">Delete your data</a><a href="es/">Español</a></nav><h1>Hoo · Dream journal</h1><p class="f">Remember your dreams, understand them, and learn to dream lucidly.</p>
-<p>Hoo is a private dream journal for iPhone and Android. Your journal stays on your phone, encrypted. When you ask, Hoo’s AI reads a dream and suggests what it may mean; dream interpretation is for reflection, not therapy or diagnosis.</p>
-<h2>Support</h2><p>Questions, problems or refunds: <a href="mailto:hooapp@proton.me">hooapp@proton.me</a>. We answer within a few days.</p>
-<h2>Subscriptions</h2><p>Hoo is free to use, with 3 AI interpretations a month. Hoo Plus adds unlimited interpretations and the lucid dreaming programme. Manage or cancel Plus in your App Store or Google Play subscription settings.</p>
-<p><a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms of use</a> · <a href="delete-data.html">Delete your data</a></p></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hoo · Dream journal with AI dream meanings</title>
+<meta name="description" content="Catch your dreams before they fade. A private dream journal that tells you what your dreams may mean and trains you to dream lucidly.">
+<meta name="theme-color" content="#0C0B1F">
+<link rel="canonical" href="https://menudaapp.com/hoo/">
+<link rel="alternate" hreflang="en" href="https://menudaapp.com/hoo/">
+<link rel="alternate" hreflang="es" href="https://menudaapp.com/hoo/es/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://menudaapp.com/hoo/">
+<meta property="og:title" content="Hoo · Dream journal with AI dream meanings">
+<meta property="og:description" content="Catch your dreams before they fade. A private dream journal that tells you what your dreams may mean and trains you to dream lucidly.">
+<meta property="og:image" content="https://menudaapp.com/hoo/img/og_en.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="apple-itunes-app" content="app-id=6831326910">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preload" href="fonts/nunito-800extrabold.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:Nunito;font-weight:400;font-display:swap;src:url(fonts/nunito-400regular.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:700;font-display:swap;src:url(fonts/nunito-700bold.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:800;font-display:swap;src:url(fonts/nunito-800extrabold.woff2) format("woff2")}
+:root{--bg:#0C0B1F;--bg2:#12112A;--surface:#1C1B3A;--surface-hi:#26254A;--line:#2F2D57;--text:#EEEBFA;--dim:#A7A3C8;--faint:#6F6B96;--accent:#7B7FD4;--accent-p:#6A6EC4;--moon:#F3E3A0;--ok:#8FD1B1;--danger:#E0727F}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;font-family:Nunito,ui-rounded,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--text);background:var(--bg);min-height:100svh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+/* sky */
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none;background:
+ radial-gradient(120% 70% at 50% -10%,#2A2766 0%,rgba(42,39,102,0) 60%),
+ radial-gradient(90% 50% at 85% 20%,rgba(123,127,212,.16),transparent 70%),
+ linear-gradient(#0C0B1F,#12112A 55%,#0C0B1F)}
+.stars{position:absolute;inset:0;background-repeat:repeat}
+.s1{background-image:radial-gradient(1px 1px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 140px 80px,#ddd8ff,transparent),radial-gradient(1.5px 1.5px at 90px 160px,#fff,transparent),radial-gradient(1px 1px at 230px 210px,#cfcaf5,transparent),radial-gradient(1px 1px at 300px 40px,#fff,transparent);background-size:340px 260px;opacity:.55;animation:tw 5s ease-in-out infinite alternate}
+.s2{background-image:radial-gradient(1.6px 1.6px at 60px 120px,#fff,transparent),radial-gradient(1px 1px at 250px 90px,#fff,transparent),radial-gradient(2px 2px at 180px 300px,#F3E3A0,transparent),radial-gradient(1px 1px at 380px 250px,#fff,transparent);background-size:460px 380px;opacity:.4;animation:tw 7s ease-in-out -3s infinite alternate}
+@keyframes tw{from{opacity:.2}to{opacity:.75}}
+.lake{position:absolute;left:0;right:0;bottom:0;height:46vh;background:url(img/lake.webp) center bottom/cover no-repeat;opacity:.35;-webkit-mask-image:linear-gradient(transparent,#000 60%);mask-image:linear-gradient(transparent,#000 60%)}
+.wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:max(28px,env(safe-area-inset-top)) 20px 28px}
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--dim)}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--text);letter-spacing:.2px;text-decoration:none}
+.brand img{width:26px;height:26px;border-radius:7px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(28,27,58,.6)}
+.lang a{padding:5px 11px;text-decoration:none;font-weight:700;font-size:13px;color:var(--faint)}
+.lang a[aria-current]{background:var(--surface-hi);color:var(--text)}
+/* hero */
+.hero{text-align:center;padding:26px 0 8px}
+.owl{width:132px;height:auto;filter:drop-shadow(0 18px 40px rgba(123,127,212,.45));animation:bob 5.5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-9px) rotate(1.5deg)}}
+h1{font-weight:800;font-size:clamp(34px,10vw,44px);line-height:1.04;letter-spacing:-.8px;margin:14px 0 10px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--moon)}
+.sub{margin:0 auto;max-width:340px;color:var(--dim);font-size:17px;line-height:1.45}
+/* ctas */
+.ctas{display:grid;gap:12px;margin:26px 0 10px}
+.btn{display:flex;align-items:center;gap:14px;width:100%;padding:13px 18px;border-radius:18px;border:0;font:inherit;text-decoration:none;cursor:pointer;text-align:left;transition:transform .15s ease,background .2s ease}
+.btn:active{transform:scale(.98)}
+.btn svg{flex:none;width:28px;height:28px}
+.btn small{display:block;font-size:12px;font-weight:700;opacity:.75;letter-spacing:.2px}
+.btn b{display:block;font-size:19px;font-weight:800;line-height:1.15}
+.btn .go{margin-left:auto;font-size:20px;opacity:.6}
+.ios{background:#F4F2FF;color:#0E0D24;box-shadow:0 10px 30px rgba(123,127,212,.28)}
+.and{background:rgba(28,27,58,.85);color:var(--text);border:1.5px solid var(--line)}
+.and .pill{margin-left:auto;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--moon);border:1px solid rgba(243,227,160,.45);border-radius:999px;padding:4px 9px;white-space:nowrap}
+.and.first{background:var(--accent);color:#0E0D24;border-color:transparent;box-shadow:0 10px 30px rgba(123,127,212,.35)}
+.and.first .pill{color:#0E0D24;border-color:rgba(14,13,36,.45)}
+.note{text-align:center;color:var(--faint);font-size:13px;margin:6px 0 0}
+/* features */
+.feats{display:grid;gap:10px;margin:30px 0 0}
+.feat{display:flex;gap:14px;align-items:flex-start;background:rgba(28,27,58,.62);border:1px solid var(--line);border-radius:18px;padding:14px 16px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.feat .ic{flex:none;width:38px;height:38px;border-radius:12px;background:rgba(123,127,212,.18);display:grid;place-items:center}
+.feat .ic svg{width:21px;height:21px}
+.feat b{display:block;font-size:16px;font-weight:800;margin-bottom:2px}
+.feat span{color:var(--dim);font-size:14.5px;line-height:1.4}
+/* shots */
+.shots-h{margin:34px 0 12px;font-size:13px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--faint);text-align:center}
+.shots{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 12px;scrollbar-width:none}
+.shots::-webkit-scrollbar{display:none}
+.shots img{flex:none;width:62%;max-width:250px;aspect-ratio:600/1304;height:auto;border-radius:20px;border:1px solid var(--line);scroll-snap-align:center;background:var(--surface);box-shadow:0 14px 34px rgba(0,0,0,.45)}
+/* bottom cta */
+.again{margin:26px 0 0;text-align:center}
+.again .btn{justify-content:center;text-align:center}
+.trust{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;color:var(--faint);font-size:13px;margin:16px 0 0}
+.trust span::before{content:"✓ ";color:var(--ok)}
+footer{margin:40px 0 0;padding:18px 0 max(10px,env(safe-area-inset-bottom));border-top:1px solid var(--line);color:var(--faint);font-size:13px;line-height:1.7;text-align:center}
+footer a{color:var(--dim)}
+footer nav{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+/* sheet */
+.scrim{position:fixed;inset:0;z-index:20;background:rgba(6,5,18,.7);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .25s ease}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:21;margin:0 auto;max-width:480px;background:var(--bg2);border:1px solid var(--line);border-bottom:0;border-radius:26px 26px 0 0;padding:12px 22px max(26px,env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .35s cubic-bezier(.2,.9,.25,1);box-shadow:0 -20px 60px rgba(0,0,0,.5)}
+.sheet{visibility:hidden;transition:transform .35s cubic-bezier(.2,.9,.25,1),visibility 0s linear .35s}
+.sheet.on{transform:none;visibility:visible;transition:transform .35s cubic-bezier(.2,.9,.25,1)}
+.grab{width:42px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 14px}
+.x{position:absolute;right:14px;top:12px;width:34px;height:34px;border-radius:50%;border:0;background:var(--surface);color:var(--dim);font-size:20px;line-height:1;cursor:pointer}
+.sheet .owl-s{display:block;width:64px;margin:0 auto 6px}
+.sheet h2{font-size:24px;font-weight:800;margin:4px 0 6px;text-align:center;letter-spacing:-.3px}
+.sheet p{color:var(--dim);text-align:center;margin:0 0 18px;font-size:15.5px;line-height:1.45}
+.field{display:flex;flex-direction:column;gap:10px}
+input[type=email]{width:100%;font:inherit;font-size:17px;color:var(--text);background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:15px 16px;outline:none;transition:border-color .2s}
+input[type=email]:focus{border-color:var(--accent)}
+input[type=email]::placeholder{color:var(--faint)}
+.submit{justify-content:center;background:var(--accent);color:#0E0D24;font-weight:800;font-size:17px;padding:15px}
+.submit:disabled{opacity:.6}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fine{font-size:12.5px;color:var(--faint);text-align:center;margin:12px 0 0;line-height:1.5}
+.fine a{color:var(--dim)}
+.err{color:var(--danger);font-size:14px;text-align:center;min-height:20px;margin:8px 0 0}
+.done{display:none;text-align:center;padding:6px 0 4px}
+.sheet.ok .done{display:block}.sheet.ok form,.sheet.ok .ask{display:none}
+.done .big{font-size:44px;margin:4px 0}
+.done .ios-tip{margin-top:14px;font-size:14px;color:var(--dim)}
+@media (prefers-reduced-motion:reduce){.owl,.s1,.s2{animation:none}.sheet,.scrim{transition:none}}
+@media (min-width:720px){.wrap{padding-top:48px}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"><div class="stars s1"></div><div class="stars s2"></div><div class="lake"></div></div>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href=""><img src="img/apple-touch-icon.png" alt="" width="26" height="26">Hoo</a>
+    <nav class="lang" aria-label="Language"><a href="?lang=en" aria-current="true">EN</a><a href="es/" >ES</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <img class="owl" src="img/owl-moon.webp" alt="" width="132" height="137" fetchpriority="high">
+      <h1>What did you <em>dream</em> last night?</h1>
+      <p class="sub">Write it down in seconds, find out what it may mean, and learn to realise you’re dreaming.</p>
+    </section>
+
+    <div class="ctas" id="ctas">
+      <a class="btn ios" id="btn-ios" href="https://apps.apple.com/app/id6831326910" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.77-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.82-.81-3-.79-1.54.02-2.96.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.38 0 1.77.74 2.98.72 1.23-.02 2.01-1.12 2.76-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.69zM14.1 5.86c.63-.77 1.06-1.83.94-2.89-.91.04-2.02.61-2.67 1.37-.58.67-1.09 1.76-.96 2.8 1.02.08 2.06-.52 2.69-1.28z"/></svg>
+        <span><small>Download free on the</small><b>App Store</b></span><span class="go">›</span>
+      </a>
+      <button class="btn and" id="btn-and" type="button" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#8FD1B1" d="M4.4 2.5 13.6 12l-9.2 9.5c-.3-.2-.5-.6-.5-1V3.5c0-.4.2-.8.5-1z"/><path fill="#7B7FD4" d="m16.7 8.9-3.1 3.1-9.2-9.5c.3-.2.8-.3 1.2-.1l11.1 6.5z"/><path fill="#F3E3A0" d="m16.7 15.1-11.1 6.5c-.4.2-.9.1-1.2-.1l9.2-9.5 3.1 3.1z"/><path fill="#E0727F" d="M20 12c0 .5-.3 1-.7 1.2l-2.6 1.9-3.1-3.1 3.1-3.1 2.6 1.9c.4.2.7.7.7 1.2z"/></svg>
+        <span><small>Android</small><b>Google Play</b></span><span class="pill">Get notified</span>
+      </button>
+    </div>
+    <p class="note">Free to start · 3 dream interpretations a month included</p>
+
+    <section class="feats" aria-label="What Hoo does">
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F3E3A0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z"/></svg></div><div><b>Catch dreams before they fade</b><span>Speak or type it the moment you wake up. Moods, people and places tag themselves.</span></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#B9BCF5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div><div><b>Discover what your dreams mean</b><span>Symbols, feelings and questions drawn from your own words, not a generic dictionary.</span></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#8FD1B1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div><div><b>Train for lucid dreams</b><span>A 7-night programme with reality checks and dreamsigns from your own journal.</span></div></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#A7A3C8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><div><b>Private by design</b><span>Your journal stays on your phone, encrypted. Nobody reads it but you.</span></div></div>
+    </section>
+
+    <h2 class="shots-h">Inside the app</h2>
+    <div class="shots" tabindex="0" aria-label="Inside the app">
+      <img src="img/en_01_journal.webp" alt="Dream journal screen" loading="lazy" width="600" height="1304">
+      <img src="img/en_02_interpretation.webp" alt="Dream interpretation screen" loading="lazy" width="600" height="1304">
+      <img src="img/en_03_capture.webp" alt="Capture a dream by voice or text" loading="lazy" width="600" height="1304">
+      <img src="img/en_05_lucid.webp" alt="Lucid dreaming programme" loading="lazy" width="600" height="1304">
+    </div>
+
+    <div class="again"><a class="btn ios" id="btn-again" href="https://apps.apple.com/app/id6831326910" rel="noopener"><b>Get Hoo on the App Store</b></a></div>
+    <div class="trust"><span>Encrypted on your phone</span><span>No account needed</span><span>Cancel anytime</span></div>
+  </main>
+
+  <footer>
+    <nav><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="delete-data.html">Delete your data</a></nav>
+    <div>Support & questions: <a href="mailto:hooapp@proton.me">hooapp@proton.me</a></div>
+    <div>Hoo Plus adds unlimited interpretations and the lucid programme. Manage it in your App Store or Google Play settings.</div>
+    <div>© 2026 Hoo</div>
+  </footer>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-h" aria-hidden="true">
+  <div class="grab"></div>
+  <button class="x" id="x" type="button" aria-label="Close">×</button>
+  <img class="owl-s" src="img/owl-moon.webp" alt="" width="64" height="66">
+  <div class="ask"><h2 id="sheet-h">Hoo is coming to Android</h2><p>Leave your email and we’ll tell you the day it lands on Google Play. Very soon.</p></div>
+  <form id="form" novalidate>
+    <div class="field">
+      <input type="email" id="email" name="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="you@email.com" required aria-label="Email">
+      <input class="hp" type="text" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn submit" id="send" type="submit">Notify me</button>
+    </div>
+    <div class="err" id="err" role="alert"></div>
+    <p class="fine">One email when Hoo launches on Android. No spam, ever. <a href="privacy.html">Privacy</a></p>
+  </form>
+  <div class="done" role="status"><div class="big">🦉</div><h2>You’re on the list!</h2><p>We’ll email you as soon as Hoo is on Google Play. Sweet dreams.</p><p class="ios-tip">Have an iPhone too? Hoo is already on the <a href="https://apps.apple.com/app/id6831326910">App Store</a>.</p></div>
+</div>
+
+<script>
+(function(){
+  var LANG="en", SB="https://bdgvfurazrtfuhogkzkw.supabase.co", KEY="sb_publishable_zYyvQphx_u3AFZoH_yhIMw_Mmm_fjdN";
+  var T={bad:"That email doesn’t look right.",fail:"Something went wrong. Please try again.",sending:"Sending…",btn:"Notify me"};
+  var q=new URLSearchParams(location.search), ua=navigator.userAgent||"";
+  if(!q.get("lang")){var st=null;try{st=localStorage.getItem("hoo_lang")}catch(e){}if(st==="es"||(!st&&/^es\b/i.test(navigator.language||""))){location.replace("es/"+location.search+location.hash);return}}else{try{localStorage.setItem("hoo_lang",q.get("lang"))}catch(e){}}
+  // Where the visit comes from (bio link of each network).
+  var src=q.get("s")||q.get("utm_source")||(/musical_ly|TikTok|BytedanceWebview/i.test(ua)?"tiktok":/Instagram/i.test(ua)?"instagram":/FBAN|FBAV|FB_IAB/i.test(ua)?"facebook":"")||(document.referrer?(function(){try{return new URL(document.referrer).hostname}catch(e){return""}})():"direct");
+  var isAndroid=/Android/i.test(ua);
+  // Android visitors: put the Google Play option first.
+  if(isAndroid){var c=document.getElementById("ctas");c.insertBefore(document.getElementById("btn-and"),c.firstChild);document.getElementById("btn-and").classList.add("first")}
+  var sheet=document.getElementById("sheet"),scrim=document.getElementById("scrim"),email=document.getElementById("email"),err=document.getElementById("err"),send=document.getElementById("send"),last=null;
+  function open(){last=document.activeElement;sheet.classList.add("on");scrim.classList.add("on");sheet.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";setTimeout(function(){if(!sheet.classList.contains("ok"))email.focus()},350)}
+  function close(){sheet.classList.remove("on");scrim.classList.remove("on");sheet.setAttribute("aria-hidden","true");document.body.style.overflow="";if(last)last.focus()}
+  document.getElementById("btn-and").addEventListener("click",open);
+  document.getElementById("x").addEventListener("click",close);
+  scrim.addEventListener("click",close);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+  if(q.get("android")!==null||location.hash==="#android")setTimeout(open,300);
+  try{if(localStorage.getItem("hoo_waitlist"))sheet.classList.add("ok")}catch(e){}
+  document.getElementById("form").addEventListener("submit",function(e){
+    e.preventDefault();err.textContent="";
+    var v=email.value.trim();
+    if(document.getElementById("website").value)return;
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v)){err.textContent=T.bad;email.focus();return}
+    send.disabled=true;send.textContent=T.sending;
+    fetch(SB+"/rest/v1/rpc/join_waitlist",{method:"POST",headers:{"content-type":"application/json",apikey:KEY,authorization:"Bearer "+KEY},body:JSON.stringify({p_email:v,p_lang:LANG,p_platform:"android",p_source:src})})
+      .then(function(r){if(!r.ok)return r.text().then(function(t){throw new Error(/invalid email/.test(t)?"bad":"fail")});
+        sheet.classList.add("ok");try{localStorage.setItem("hoo_waitlist","1")}catch(e){}})
+      .catch(function(x){err.textContent=x&&x.message==="bad"?T.bad:T.fail})
+      .then(function(){send.disabled=false;send.textContent=T.btn});
+  });
+})();
+</script>
+</body>
+</html>
